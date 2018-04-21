@@ -43,9 +43,8 @@ function constructFilter(filterName, query) {
                 watcher.reject(changeError);
               } else if (Array.isArray(decodedChangeResults) && changeResult.length > 0) {
                 watcher.resolve(decodedChangeResults);
+                watcher.callback(changeError, decodedChangeResults);
               }
-
-              watcher.callback(changeError, decodedChangeResults);
             }
           });
         });
